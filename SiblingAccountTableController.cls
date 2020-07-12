@@ -8,7 +8,6 @@
 public class SiblingAccountTableController {
     
     private List<Contact> siblingPrimaryContactList{get;set;}
-    private Map<Id, Account> siblingMap{get;set;}
     public String searchKey{get;set;}
     public List<contactWrapper> contactWrapperList {get;set;}
     private List<Contact> updateStatusContacts{get;set;}
@@ -28,8 +27,7 @@ public class SiblingAccountTableController {
         try{
             Account acc = [Select Id, ParentId FROM Account WHERE Name=: searchKey OR Id=:searchKey];
             if(acc != null && acc.ParentId != null){
-            	siblingMap = new Map<Id, Account>([Select Id, Name FROM Account WHERE ParentId=: acc.ParentId AND Id !=: acc.Id]);
-            	siblingPrimaryContactList = [Select Id, Account.Name, AccountId, Name, FirstName, LastName, Email, MobilePhone, Level__c, Status__c, Tax_Id__c FROM Contact WHERE AccountId=: siblingMap.keySet() AND Level__c = 'Primary'];
+            	siblingPrimaryContactList = [Select Id, Account.Name, AccountId, Name, FirstName, LastName, Email, MobilePhone, Level__c, Status__c, Tax_Id__c FROM Contact WHERE AccountId IN: ([Select Id FROM Account WHERE ParentId=: acc.ParentId AND Id !=: acc.Id]) AND Level__c = 'Primary' ORDER BY Account.Name ASC];
             	for(Contact siblingContact: siblingPrimaryContactList){
                 	contactWrapperList.add(new contactWrapper(siblingContact));
             	}
