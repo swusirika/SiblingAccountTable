@@ -15,8 +15,8 @@
                         <apex:pageBlockTable value="{!contactWrapperList}" var="contactWrapper">
                             <apex:column >
                                 <apex:facet name="header">
-                                    <apex:actionFunction action="{!selectAll}" name="selectAll" reRender="siblingTablePanel, siblingPanel"/>
-                                	<apex:inputCheckbox onclick="selectAll()"/>
+                                    <!--<apex:actionFunction action="{!selectAll}" name="selectAll" reRender="siblingTablePanel, siblingPanel"/>
+                                	<apex:inputCheckbox onclick="selectAll()"/>-->
                                 </apex:facet>
 								<apex:inputCheckbox value="{!contactWrapper.selected}"/>
 							</apex:column>
