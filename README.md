@@ -21,3 +21,4 @@ Visualforce Page on which user can input an account name or ID to get list of Si
 - Make sure permission set has read/write access to Contact object/fields & read access to Account object/fields
 - Add SiblingAccountTable Visualforce page to permission set
 - Add required profiles to permission set
+- Create a Visualforce Tab on Service App for "Sibling Account Table"
