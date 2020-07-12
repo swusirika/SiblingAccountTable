@@ -19,5 +19,5 @@ Visualforce Page on which user can input an account name or ID to get list of Si
 - commit changes to current branch (run pipeline if available & create Pull request to master/main branch)
 - Create permission set "Sibling Account Permissions"
 - Make sure permission set has read/write access to Contact object/fields & read access to Account object/fields
-- Add Visualforce page to permission set
+- Add SiblingAccountTable Visualforce page to permission set
 - Add required profiles to permission set
