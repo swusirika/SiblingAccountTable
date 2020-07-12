@@ -11,3 +11,13 @@ Visualforce Page on which user can input an account name or ID to get list of Si
 - Must have error handling for all the above features
 - Must include test classes for all features
 
+### Installation Process:
+- Create Contact.Status__c picklist field with "Contacted","Not Contacted" as possible values
+- Create Contact.Tax_Id__c string field 
+- Create Branch from master branch (if not already done)
+- Add all files except ReadMe & Design PDF
+- commit changes to current branch (run pipeline if available & create Pull request to master/main branch)
+- Create permission set "Sibling Account Permissions"
+- Make sure permission set has read/write access to Contact object/fields & read access to Account object/fields
+- Add Visualforce page to permission set
+- Add required profiles to permission set
