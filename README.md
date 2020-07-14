@@ -18,7 +18,7 @@ The User can then edit contact fields or mark those primary contacts as contacte
 - Create Branch from master branch (if not already done)
 - Add all files except ReadMe & Design PDF
 - commit changes to current branch (run pipeline if available & create Pull request to master/main branch)
-- Create permission set "Sibling Account Permissions"
+- Create permission set "Sibling Account Permissions" adn add all required users to this permission set
 - Make sure permission set has read/write access to Contact object/fields & read access to Account object/fields
 - Add SiblingAccountTable Visualforce page to permission set
 - Add required profiles to permission set
