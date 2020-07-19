@@ -1,4 +1,16 @@
 <apex:page controller="SiblingAccountTableController" tabStyle="Account" sidebar="true" showHeader="true" lightningStylesheets="true">
+    <script type="text/javascript">
+        function selectAll(selectAllCheckbox, checkedRecord) {
+            var inputs = document.getElementsByTagName("input");
+            var checked = selectAllCheckbox.checked;
+            for(var i=0; i<inputs.length; i++){            
+                 if(inputs[i].id.indexOf(checkedRecord)!=-1){                                      
+                    inputs[i].checked = selectAllCheckbox.checked;
+                }
+            }
+        }
+    </script>
+
     <apex:form>
         <apex:outputPanel id="MessagePanel" onclick="clearMessage()">
             <apex:actionFunction action="{!clearMessage}" name="clearMessage" reRender="MessagePanel"/>
@@ -15,10 +27,10 @@
                         <apex:pageBlockTable value="{!contactWrapperList}" var="contactWrapper">
                             <apex:column >
                                 <apex:facet name="header">
-                                    <!--<apex:actionFunction action="{!selectAll}" name="selectAll" reRender="siblingTablePanel, siblingPanel"/>
-                                	<apex:inputCheckbox onclick="selectAll()"/>-->
+                                    <!--<apex:actionFunction action="{!selectAll}" name="selectAll" reRender="siblingTablePanel, siblingPanel"/>-->
+                                	<apex:inputCheckbox onclick="selectAll(this, 'checkedRecord')"/>
                                 </apex:facet>
-								<apex:inputCheckbox value="{!contactWrapper.selected}"/>
+								<apex:inputCheckbox value="{!contactWrapper.selected}" id="checkedRecord"/>
 							</apex:column>
                             <apex:column headerValue="Account Name">
                                 <apex:outputLink value="/{!contactWrapper.primaryContact.AccountId}" target="_blank">
