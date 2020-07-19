@@ -66,7 +66,12 @@ public class SiblingAccountTableController {
             if(cw.selected == true){
                 cw.primaryContact.Status__c = 'Contacted';
                 updateStatusContacts.add(cw.primaryContact);
+                cw.selected = false;		    
             }
+        }
+        if(updateStatusContacts.isEmpty()){
+            ApexPages.addMessage(new ApexPages.Message(ApexPages.Severity.WARNING,'No Primary Contacts selected.'));
+            return;
         }
         try{
             update updateStatusContacts;
@@ -111,7 +116,7 @@ public class SiblingAccountTableController {
         public Boolean selected {get;set;}
         
         public contactWrapper(Contact c){
-			primaryContact = c;	
+	    primaryContact = c;	
             selected = false;
         }
     }
